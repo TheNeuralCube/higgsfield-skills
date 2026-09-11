@@ -14,6 +14,8 @@ Preferred defaults for examples and quick-start guidance in this repo:
 
 ## Image models
 
+For GPT social formats, use `--aspect_ratio 4:5` or `--aspect_ratio 5:4`. Check `higgsfield model get <job_type>` for backend availability before generation.
+
 | Model | Provider | What it's for |
 |---|---|---|
 | Nano Banana 2 | Google | **Fast everyday default for character work.** Edits, general generation, character / cartoon / animated-style outputs. The reach-for-this model when the brief calls for character or cartoon-style image generation. |
@@ -31,7 +33,8 @@ Preferred defaults for examples and quick-start guidance in this repo:
 | Flux Kontext Max | Black Forest Labs | **Context-aware editing and style transfer.** Strong for anime, stylized looks, typography remix — when defaults feel too generic. |
 | Kling O1 Image | Kling | Versatile photorealistic image generation with broad aspect-ratio support. |
 | GPT Image 1.5 | OpenAI | Earlier-generation OpenAI image model with editing and text-rendering capabilities. |
-| GPT Image 2 | OpenAI | **Default high-fidelity image generation.** Graphic design, UI, banners, typography, and any brief with on-image text. Used by `higgsfield-product-photoshoot` under the hood. |
+| GPT Image 2 | OpenAI | **Default high-fidelity image generation.** Graphic design, UI, banners, typography, and any brief with on-image text. Used by `higgsfield-product-photoshoot` under the hood. Supports `4:5` portrait and `5:4` landscape for social and product assets. |
+| GPT Image 2.5 (`gpt_image_2_5`) | OpenAI | Image generation and reference-guided editing with Flare/Sunburst variants and quality tiers through `max`. Supports `4:5` portrait and `5:4` landscape at 1k/2k/4k; choose it when those variants or higher quality tiers are requested. Keep GPT Image 2 as the general default. |
 | Grok Imagine | xAI | Expressive, high-contrast, bold creative outputs. Worth trying for anime and stylized looks. |
 | Recraft V4.1 | Recraft | **Clean graphic and vector-style design assets.** Logos, icons, flat illustrations, brand marks, and controlled-palette visuals. Use `model_type=vector` for vector-like output and `standard` for raster-style graphics. |
 | Cinema Studio Image 2.5 | Higgsfield | Cinematic still frames up to 4K, dramatic film look. |
