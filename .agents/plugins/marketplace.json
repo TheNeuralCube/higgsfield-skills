@@ -1,0 +1,20 @@
+{
+  "name": "higgsfield",
+  "interface": {
+    "displayName": "Higgsfield AI (NeuralCube fork)"
+  },
+  "plugins": [
+    {
+      "name": "higgsfield",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Design"
+    }
+  ]
+}
