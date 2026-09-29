@@ -46,12 +46,13 @@ Train my Soul on this headshot, then make 5 lifestyle photos of my product
 3. **Pick top 2 → animate** (`higgsfield-generate`, image-to-video):
 
    ```bash
-   higgsfield generate create kling3_0 \
+   higgsfield generate create seedance_2_5 \
      --prompt "subtle product reveal, camera slowly pulls back, ambient motion" \
+     --mode omni_reference \
      --start-image ./campaign/photos/lifestyle-01.jpg \
      --duration 5 \
      --aspect_ratio 1:1 \
-     --sound off \
+     --generate_audio false \
      --output-dir ./campaign/videos \
      --wait
    ```
@@ -59,7 +60,7 @@ Train my Soul on this headshot, then make 5 lifestyle photos of my product
 **Tips:**
 
 - Use `--count 5` on photoshoot first — cheaper than 5 separate runs and the backend coordinates the visual system across variants.
-- `kling3_0` with `--start-image` gives the cleanest image-to-video. `seedance_2_0` is an alternative for more dramatic motion.
+- `seedance_2_5` with `--mode omni_reference --start-image` is the default image-to-video. Use `kling3_0_turbo` only when the user asks for a cheaper or faster pass.
 - For the founder's face to stay consistent in animations, use Soul models (`text2image_soul_v2`) for the photoshoot step instead of `gpt_image_2`. Trade-off: less control over background, more on identity.
 
 ---
@@ -253,19 +254,22 @@ Build a small browser game where a robot collects batteries while avoiding drone
 
 **What the agent does:**
 
-1. Uses `higgsfield-game-generation` to lock the game profile, STYLE FORMULA, and `design/assets.csv`.
-2. Generates the declared assets and builds `index.html` plus `logic.js`.
-3. Runs the game locally and verifies the complete loop on keyboard and touch.
-4. Packages and deploys:
+1. Uses `higgsfield-websites` with `--type game` to lock the game profile, STYLE FORMULA, and `design/assets.csv`.
+2. Creates the game:
 
    ```bash
-   higgsfield game deploy ./game.zip \
-     --title "Battery Run" \
-     --description "Collect batteries and dodge patrol drones." \
-     --json
+   higgsfield website create --type game --category arcade --subdomain battery-run
    ```
 
-Marketplace publication is separate and happens only when the user asks for it.
+3. Generates the declared assets and implements the game in `app/src/logic.js`.
+4. Runs the game locally and verifies the complete loop on keyboard and touch.
+5. Pushes and deploys:
+
+   ```bash
+   higgsfield website deploy <website_id>
+   ```
+
+Publishing is separate (`higgsfield website publish`) and happens only when the user asks for it.
 
 ---
 
@@ -277,11 +281,11 @@ Marketplace publication is separate and happens only when the user asks for it.
 | Generate paid-social ads from a URL | #2 UGC Ad Batch | `higgsfield-generate` (Marketing Studio) |
 | Async team updates without recording | #3 Founder Video | `higgsfield-soul-id` → `higgsfield-generate` |
 | Turn a topic or document into a narrated explainer | #4 Narrated Explainer | `higgsfield-video-explainer` |
-| Build and deploy a playable browser game | #5 Browser Game | `higgsfield-game-generation` |
+| Build and deploy a playable browser game | #5 Browser Game | `higgsfield-websites` (`--type game`) |
 
 ## Patterns these recipes share
 
 1. **Train identity once, reuse forever.** Soul training is 15–45 minutes one-time. Every future video that needs the founder's face is one prompt away.
 2. **Let the backend assemble the prompt for branded work.** `product-photoshoot` enhances prompts before submitting to `gpt_image_2`. Don't write `gpt_image_2` prompts by hand.
-3. **Cheap-first iteration.** Test cheap models (`flux`, `z_image`) for prompt iteration; switch to expensive (`nano_banana_pro`, `gpt_image_2`) only on confirmed direction.
+3. **Cheap-first iteration on request.** When the user wants to iterate cheaply, draft on `z_image`, then switch to the default model (`gpt_image_2_5`) once the direction is confirmed.
 4. **Filenames have timestamps.** Use `yyyy-mm-dd-hh-mm-ss-name.ext` so you can trace which generation came from which session.

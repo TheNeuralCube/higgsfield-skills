@@ -115,7 +115,7 @@ jobs:
         run: |
           set -euo pipefail
           fail=0
-          listed=$(python3 -c "import json; print(' '.join(s['path'] for s in json.load(open('.claude-plugin/marketplace.json'))['plugins'][0]['skills']))")
+          listed=$(python3 -c "import json; print(' '.join(s.removeprefix('./').rstrip('/') for s in json.load(open('.claude-plugin/marketplace.json'))['plugins'][0]['skills']))")
           for skill_dir in higgsfield-*/; do
             skill_name="${skill_dir%/}"
             if ! echo " $listed " | grep -q " $skill_name "; then

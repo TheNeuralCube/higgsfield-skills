@@ -95,7 +95,7 @@ case "$HOST" in
     ;;
 esac
 
-SKILLS=(higgsfield-generate higgsfield-soul-id higgsfield-product-photoshoot higgsfield-brandkit higgsfield-marketplace-cards higgsfield-websites higgsfield-video-explainer higgsfield-youtube-thumbnail higgsfield-game-generation)
+SKILLS=(higgsfield-generate higgsfield-soul-id higgsfield-product-photoshoot higgsfield-brandkit higgsfield-marketplace-cards higgsfield-websites higgsfield-video-explainer higgsfield-youtube-thumbnail)
 
 ok "Detected host: $HOST"
 ok "Target install path: $TARGET_DIR/<skill-name>"
