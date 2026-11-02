@@ -1,8 +1,8 @@
 # Higgsfield AI Skills
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![Version](https://img.shields.io/badge/version-0.13.0-green.svg)](./VERSION)
-[![Skills](https://img.shields.io/badge/skills-8-blueviolet.svg)](#skills)
+[![Version](https://img.shields.io/badge/version-0.14.0-green.svg)](./VERSION)
+[![Skills](https://img.shields.io/badge/skills-9-blueviolet.svg)](#skills)
 [![Discord](https://img.shields.io/badge/discord-join-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/higgsfield)
 
 AI agent skills for image/video generation and complete visual brand systems via [Higgsfield AI](https://higgsfield.ai), including Marketing Studio and Virality Predictor video scoring. Works with Claude Code, Cursor, Codex, and other AI coding agents that load Markdown-based skills.
@@ -56,7 +56,8 @@ More options in [INSTALL.md](./INSTALL.md). Agent-driven install (paste into you
 | [`higgsfield-brandkit`](./higgsfield-brandkit) | `/higgsfield:higgsfield-brandkit` | Create or extend a complete visual identity: palettes, editable SVG logo marks, typography, mockups, social graphics, packaging, signage, merchandise, decks, and canonical PPTX/PDF brandbooks. |
 | [`higgsfield-marketplace-cards`](./higgsfield-marketplace-cards) | `/higgsfield:higgsfield-marketplace-cards` | Marketplace product cards: compliant main image, secondary product images, and A+ style modules via backend prompt enhancement. |
 | [`higgsfield-websites`](./higgsfield-websites) | `/higgsfield:higgsfield-websites` | Build, edit, and deploy full-stack websites — React 19 + TanStack Start, server-rendered as one Cloudflare Worker with D1 / R2 / KV / Durable Objects / Containers. Create → get git repo access → edit locally → push → deploy preview/production, all via `higgsfield website …`. |
-| [`higgsfield-video-explainer`](./higgsfield-video-explainer) | `/higgsfield:higgsfield-video-explainer` | Create a narrated non-photoreal explainer as matched Seed Audio + Gemini Omni blocks, then assemble the final MP4 with `explainer_video`. |
+| [`higgsfield-faceless-video`](./higgsfield-faceless-video) | `/higgsfield:higgsfield-faceless-video` | Create faceless explainers, stories, documentaries, and children's music videos. |
+| [`higgsfield-video-explainer`](./higgsfield-video-explainer) | `/higgsfield:higgsfield-video-explainer` | Compatibility entry for faceless explainers. |
 | [`higgsfield-youtube-thumbnail`](./higgsfield-youtube-thumbnail) | `/higgsfield:higgsfield-youtube-thumbnail` | Create truthful, high-impact YouTube thumbnails and vertical video covers with identity-preserving references, controlled variants, focused edits, and optional text-overlay guidance. |
 
 The skills chain: train Soul → use the reference id in `generate` (including Marketing Studio jobs). `brandkit` chains Recraft, Seedream, GPT Image, and deterministic local tooling into one approval-aware identity system. `product-photoshoot` and `marketplace-cards` are self-contained — backend enhances prompts before submitting image jobs. `youtube-thumbnail` can follow any video workflow once its truthful topic and visual direction are known. `websites` chains with `generate` to embed bespoke hero images, video loops, and OG assets in the site.
@@ -107,7 +108,7 @@ The skills chain: train Soul → use the reference id in `generate` (including M
 | Train a custom face identity | `higgsfield-soul-id` | 5–20 photos, returns `reference_id` |
 | Image-to-video animation | `higgsfield-generate` | Prefer `seedance_2_5` with `--mode omni_reference --start-image`; `kling3_0_turbo` when the user asks for cheaper |
 | Build / edit / deploy a website, web app, landing page, or dashboard | `higgsfield-websites` | Full-stack React 19 + TanStack Start on Cloudflare; `higgsfield website create/repo-access/deploy` |
-| Create a narrated explainer from a topic or document | `higgsfield-video-explainer` | Resolves a live style, generates audio then video per block, and assembles with `explainer_video` |
+| Create a narrated explainer from a topic or document | `higgsfield-faceless-video` | Generates scenes and narration, then assembles a finished video locally |
 | Create a YouTube thumbnail or Shorts/Instagram video cover | `higgsfield-youtube-thumbnail` | Nano Banana Pro 4K main render, optional face/logo references, controlled variants, and Seedream tweaks |
 | Build and deploy a playable browser game | `higgsfield-websites` | `--type game`: game design, assets, implementation, QA, deploy, and optional publish |
 

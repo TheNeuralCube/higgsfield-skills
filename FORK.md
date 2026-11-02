@@ -12,7 +12,7 @@ The changes are kept deliberately small so upstream merges stay clean. The skill
 
 | File | Change | Why |
 |---|---|---|
-| `.claude-plugin/marketplace.json` | `skills` is a list of folder paths instead of a list of objects; a marketplace description is added | Upstream's form fails Claude Code's validator (`plugins.0.skills: Invalid input`, Claude Code 2.1.278), so `/plugin install higgsfield@higgsfield` fails |
+| `.claude-plugin/marketplace.json` | A marketplace description (`metadata.description`) is added | Upstream used to list `skills` as objects, which failed Claude Code's validator; since 0.13.0 upstream lists folder paths itself, so the description is the only remaining difference |
 | `.agents/plugins/marketplace.json` | Added | Codex needs a marketplace file to install from this repository; upstream ships the Codex plugin manifest (`.codex-plugin/plugin.json`) but no marketplace |
 | `FORK.md` | Added | This file |
 

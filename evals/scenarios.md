@@ -254,18 +254,18 @@ These exist to be run by a human (or by another agent acting as the user) in a f
 
 **Expected behavior:**
 
-- Routes to `higgsfield-video-explainer`, not generic video generation.
+- Routes to `higgsfield-faceless-video` (or the compatible explainer entry), not generic video generation.
 - Runs `higgsfield preset list video-explainer --json` and shows current preview links.
 - Waits for style selection, then resolves its UUID with `higgsfield preset resolve video-explainer`.
 - Lets the user choose one voice and creates six Russian `seed_audio` narration jobs first.
-- Creates six matching 10-second `gemini_omni` clips second, all with the resolved style key.
-- Builds ordered `blocks.json` pairs and finishes with one `explainer_video` generation job.
+- Creates six matching 10-second clips with a supported video model and the chosen style.
+- Assembles the ordered pairs with the bundled script and verifies the final MP4.
 
 **Score:**
 
 - Pass: live preset and voice selection, six matched audio/video blocks, final assembled MP4.
 - Partial: correct block pipeline but chooses a requested option without showing it or loses a block pairing.
-- Fail: embeds a preset list, fabricates an ID, uses `video_explainer`, or returns loose clips.
+- Fail: embeds a preset list, fabricates an ID, uses a retired server-side assembler, or returns loose clips.
 
 ---
 
